@@ -1,15 +1,13 @@
-const mongoose = require('mongoose');
-const { Schema } = mongoose;
-const path = require('path');
+const mongoose = require('mongoose')
+const { Schema } = mongoose
 
 const imageSchema = new Schema({
-    uniqueId: String,
     title: String,
     description: String,
-    filename: String,
+    ext: String,
     views: { type: Number, default: 0 },
     likes: { type: Number, default: 0 },
     timestamp: { type: Date, default: Date.now }
 });
 
-module.exports = mongoose.model('Image', imageSchema);
+module.exports = mongoose.model('Image', imageSchema)

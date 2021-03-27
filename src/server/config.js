@@ -5,9 +5,14 @@ const multer = require('multer');
 const express = require('express');
 const routes = require('../routes/index');
 const errhdl = require('errorhandler');
+const Handlebars = require('handlebars')
 
 module.exports = app => {
-    // Settings
+    const {
+        allowInsecurePrototypeAccess,
+    } = require("@handlebars/allow-prototype-access");
+
+    // Configuraciones
     app.set('port', process.env.PORT || 3000);
     app.set('views', path.join(__dirname, '../views'));
     app.engine('.hbs', exphbs({
@@ -15,7 +20,8 @@ module.exports = app => {
         partialsDir: path.join(app.get('views'), 'partials'),
         layoutsDir: path.join(app.get('views'), 'layouts'),
         extname: '.hbs',
-        helpers: require('./helpers')
+        helpers: require('./helpers'),
+        handlebars: allowInsecurePrototypeAccess(Handlebars),
     }));
     app.set('view engine', '.hbs');
 
@@ -25,10 +31,10 @@ module.exports = app => {
     app.use(express.urlencoded({ extended: false }));
     app.use(express.json());
 
-    // Routes
+    // Rutas
     routes(app);
 
-    // Static files
+    // Archivos estáticos
     app.use('/public', express.static(path.join(__dirname, '../public')));
 
     // ErrorHandlers
