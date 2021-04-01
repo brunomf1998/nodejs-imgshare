@@ -1,6 +1,6 @@
 <div class="card">
-    <div class="card-header bg-dark">
-        <h3 class="card-title text-white">
+    <div class="card-header bg-dark text-white">
+        <h3 class="m-0">
             <i class="far fa-image"></i>
             Subir una imagen
         </h3>
@@ -29,19 +29,21 @@
     </div>
 </div>
 
-<div class="card mt-3">
+<div class="card my-3">
     <div class="card-header bg-dark text-white">
-        <h3><i class="far fa-images"></i> Recién subidas</h3>
+        <h3 class="m-0"><i class="far fa-images"></i> Recién subidas</h3>
     </div>
     <div class="card-body">
-        <div class="row">
-            {{#each images}}
-                <div class="col-md-4">
-                    <a href="/images/{{_id}}">
-                        <img src="/public/upload/{{_id}}{{ext}}" alt="" class="w-100 h-100 img-thumbnail">
-                    </a>
-                </div>
-            {{/each}}
+        <div style="overflow: hidden">
+            <div class="row m-0">
+                {{#each images}}
+                    <div class="col-sm-4 p-1">
+                        <a href="/images/{{_id}}">
+                            <img src="/public/upload/{{_id}}{{ext}}" alt="" class="w-100 h-100">
+                        </a>
+                    </div>
+                {{/each}}
+            </div>
         </div>
     </div>
 </div>
