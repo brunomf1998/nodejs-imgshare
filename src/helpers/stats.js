@@ -1,11 +1,11 @@
-const { Comment, Image } = require('../models')
+const { Comment, Image } = require('../models');
 
 imagesCounter = async () => {
-    return await Image.countDocuments()
+    return await Image.countDocuments();
 }
 
 commentsCounter = async () => {
-    return await Comment.countDocuments()
+    return await Comment.countDocuments();
 }
 
 imageTotalViewsCounter = async () => {
@@ -14,8 +14,8 @@ imageTotalViewsCounter = async () => {
             _id: '1',
             viewsTotal: { $sum: '$views' }
         }
-    }])
-    return result[0].viewsTotal
+    }]);
+    return result[0].viewsTotal;
 }
 
 likesTotalCounter = async () => {
@@ -24,8 +24,8 @@ likesTotalCounter = async () => {
             _id: '1',
             likesTotal: { $sum: '$likes' }
         }
-    }])
-    return result[0].likesTotal
+    }]);
+    return result[0].likesTotal;
 }
 
 module.exports = async () => {
@@ -34,11 +34,11 @@ module.exports = async () => {
         commentsCounter(),
         imageTotalViewsCounter(),
         likesTotalCounter()
-    ])
+    ]);
     return {
         images: results[0],
         comments: results[1],
         views: results[2],
         likes: results[3]
-    }
+    };
 }

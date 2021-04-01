@@ -5,12 +5,10 @@ const multer = require('multer');
 const express = require('express');
 const routes = require('../routes/index');
 const errhdl = require('errorhandler');
-const Handlebars = require('handlebars')
+const Handlebars = require('handlebars');
 
-module.exports = app => {
-    const {
-        allowInsecurePrototypeAccess,
-    } = require("@handlebars/allow-prototype-access");
+module.exports = (app) => {
+    const { allowInsecurePrototypeAccess } = require("@handlebars/allow-prototype-access");
 
     // Configuraciones
     app.set('port', process.env.PORT || 3000);

@@ -1,5 +1,5 @@
-const { Schema, model } = require('mongoose')
-const { ObjectId } = Schema
+const { Schema, model } = require('mongoose');
+const { ObjectId } = Schema;
 
 const commentSchema = new Schema({
     image_id: ObjectId,
@@ -8,14 +8,14 @@ const commentSchema = new Schema({
     gravatar: String,
     comment: String,
     timestamp: { type: Date, default: Date.now }
-})
+});
 
 commentSchema.virtual('image')
     .set(function (image) {
-        this._image = image
+        this._image = image;
     })
     .get(function () {
-        return this._image
-    })
+        return this._image;
+    });
 
 module.exports = model('Comment', commentSchema)
