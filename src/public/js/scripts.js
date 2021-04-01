@@ -33,8 +33,10 @@ btnToggleComment.addEventListener('click', (e) => {
     e.preventDefault()
     if (postComment.style.display === 'none') {
         postComment.style.display = 'block'
+        btnToggleComment.classList.replace('fa-plus', 'fa-minus')
     } else {
         postComment.style.display = 'none'
+        btnToggleComment.classList.replace('fa-minus', 'fa-plus')
     }
     
 })

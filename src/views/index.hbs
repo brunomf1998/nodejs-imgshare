@@ -1,31 +1,29 @@
 <div class="card">
     <div class="card-header bg-dark text-white">
-        <h3 class="m-0">
-            <i class="far fa-image"></i>
-            Subir una imagen
-        </h3>
+        <h3 class="m-0"><i class="far fa-image"></i> Subir una imagen</h3>
     </div>
-
-    <div class="card-body">
-        <form action="/images" method="POST" enctype="multipart/form-data">
-            <div class="form-group">
-                <div class="input-group mb-3">
-                    <input type="file" name="image" class="form-control" id="inputGroupFile">
+    <div class="card-body p-2">
+        <div class="p-1">
+            <form action="/images" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <div class="input-group mb-3">
+                        <input type="file" name="image" class="form-control" id="inputGroupFile">
+                    </div>
                 </div>
-            </div>
-            <div class="form-group mb-3">
-                <input type="text" name="title" class="form-control" placeholder="Título para la imagen" required>
-            </div>
-            <div class="form-group mb-3">
-                <textarea name="description" class="form-control" rows="2" placeholder="Descripción para la imagen" required></textarea>
-            </div>
+                <div class="form-group mb-3">
+                    <input type="text" name="title" class="form-control" placeholder="Título para la imagen" required>
+                </div>
+                <div class="form-group mb-3">
+                    <textarea name="description" class="form-control" rows="2" placeholder="Descripción para la imagen" required></textarea>
+                </div>
 
-            <div class="form-group">
-                <button class="btn btn-success">
-                    <i class="fa fa-upload"></i> Subir imagen
-                </button>
-            </div>
-        </form>
+                <div class="form-group">
+                    <button class="btn btn-success">
+                        <i class="fa fa-upload"></i> Subir imagen
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
@@ -33,7 +31,7 @@
     <div class="card-header bg-dark text-white">
         <h3 class="m-0"><i class="far fa-images"></i> Recién subidas</h3>
     </div>
-    <div class="card-body">
+    <div class="card-body p-2">
         <div style="overflow: hidden">
             <div class="row m-0">
                 {{#each images}}
