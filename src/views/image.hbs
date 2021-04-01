@@ -41,40 +41,43 @@
         <i class="fas fa-plus p-1" role="button" id="btn-toggle-comment"></i>
     </div>
 
-    <div class="card-body p-2">
-        <blockquote class="m-0 p-1" id="post-comment" style="display: none">
-            <form action="/images/{{image._id}}/comment" method="POST">
-                <div class="mb-3">
-                    <input type="text" class="form-control" name="name" placeholder="Nombre">
-                </div>
-                <div class="mb-3">
-                    <input type="text" class="form-control" name="email" placeholder="Correo electrónico">
-                </div>
-                <div class="mb-3">
-                    <textarea name="comment" rows="2" class="form-control" placeholder="Tu comentario"></textarea>
-                </div>
-                <button class="btn btn-success" id="btn-comment">
-                    <i class="fas fa-comment"></i> Publicar
-                </button>
-            </form>
+    <div class="card-body p-0">
+        <blockquote class="mb-0 p-2" id="post-comment" style="display: none">
+            <div class="p-1">
+                <form action="/images/{{image._id}}/comment" method="POST">
+                    <div class="mb-3">
+                        <input type="text" class="form-control" name="name" placeholder="Nombre">
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" name="email" placeholder="Correo electrónico">
+                    </div>
+                    <div class="mb-3">
+                        <textarea name="comment" rows="2" class="form-control" placeholder="Tu comentario"></textarea>
+                    </div>
+                    <button class="btn btn-success" id="btn-comment">
+                        <i class="fas fa-comment"></i> Publicar
+                    </button>
+                </form>
+            </div>
         </blockquote>
 
-        <div class="container">
+        {{#if comments}}
+            <div class="container p-1" style="overflow: hidden">
             {{#each comments}}
-                <div class="row mb-3">
-                    <div class="col-2 col-lg-1 d-flex justify-content-center align-items-center">
+                <div class="row w-100 m-0">
+                    <div class="col-3 col-sm-2 col-xl-1 d-flex justify-content-center align-items-center p-0">
                         <img src="http://gravatar.com/avatar/{{gravatar}}?d=monsterid&s=45" alt="" class="rounded-circle">
                     </div>    
-                    <div class="col-10 col-lg-11">
-                        <div class="card p-3 bg-light" style="border-radius: 20px">
-                            <p class="fw-bold m-0">{{name}}</p>
-                            <p class="m-0">{{comment}}</p>
-                            <span class="text-end fst-italic">{{timeAgo timestamp}}</span>
-                        </div>
+                    <div class="col-9 col-sm-10 col-xl-11 p-2">
+                        <blockquote class="col m-0">
+                            <p class="my-1">{{comment}}</p>
+                            <footer class="blockquote-footer my-1">{{name}}, {{timeAgo timestamp}}</footer>
+                        </blockquote>
                     </div>
                 </div>
             {{/each}}
-        </div>
+        </div> 
+        {{/if}}
     </div>
 </div>
 
