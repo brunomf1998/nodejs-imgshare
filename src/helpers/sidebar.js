@@ -16,4 +16,4 @@ module.exports = async (viewModel) => {
     };
 
     return viewModel;
-}
+};

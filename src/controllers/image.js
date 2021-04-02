@@ -1,9 +1,10 @@
-const path = require('path');
 const fs = require('fs-extra');
-const ctrl = {};
-const { Image, Comment } = require('../models/index');
 const md5 = require('md5');
+const path = require('path');
 const sidebar = require('../helpers/sidebar');
+const { Image, Comment } = require('../models');
+
+const ctrl = {};
 
 ctrl.index = async (req, res) => {
     try {
@@ -19,7 +20,7 @@ ctrl.index = async (req, res) => {
     } catch (error) {
         res.redirect('/');
     }
-}
+};
 
 ctrl.create = async (req, res) => {
     const imageTempPath = req.file.path;
@@ -40,7 +41,7 @@ ctrl.create = async (req, res) => {
             error: 'Only images are allowed'
         });
     }
-}
+};
 
 ctrl.like = async (req, res) => {
     try {
@@ -55,7 +56,7 @@ ctrl.like = async (req, res) => {
             error: 'Internal Error'
         });
     }
-}
+};
 
 ctrl.comment = async (req, res) => {
     const image = await Image.findById(req.params.image_id);
@@ -66,7 +67,7 @@ ctrl.comment = async (req, res) => {
         await newComment.save();
         res.redirect('/images/' + image._id);
     }
-}
+};
 
 ctrl.remove = async (req, res) => {
     try {
@@ -80,6 +81,6 @@ ctrl.remove = async (req, res) => {
             error: 'Internal Error'
         });
     }
-}
+};
 
-module.exports = ctrl
+module.exports = ctrl;

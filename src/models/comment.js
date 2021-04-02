@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+
 const { ObjectId } = Schema;
 
 const commentSchema = new Schema({
@@ -18,4 +19,4 @@ commentSchema.virtual('image')
         return this._image;
     });
 
-module.exports = model('Comment', commentSchema)
+module.exports = model('Comment', commentSchema);

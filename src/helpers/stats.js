@@ -2,11 +2,11 @@ const { Comment, Image } = require('../models');
 
 imagesCounter = async () => {
     return await Image.countDocuments();
-}
+};
 
 commentsCounter = async () => {
     return await Comment.countDocuments();
-}
+};
 
 imageTotalViewsCounter = async () => {
     const result = await Image.aggregate([{ 
@@ -16,7 +16,7 @@ imageTotalViewsCounter = async () => {
         }
     }]);
     return result[0].viewsTotal;
-}
+};
 
 likesTotalCounter = async () => {
     const result = await Image.aggregate([{
@@ -26,7 +26,7 @@ likesTotalCounter = async () => {
         }
     }]);
     return result[0].likesTotal;
-}
+};
 
 module.exports = async () => {
     const results = await Promise.all([
@@ -41,4 +41,4 @@ module.exports = async () => {
         views: results[2],
         likes: results[3]
     };
-}
+};
